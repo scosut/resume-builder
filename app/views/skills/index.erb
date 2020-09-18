@@ -1,0 +1,57 @@
+<% 
+@page      = "skills" 
+page_count = @skills.each_slice(10).to_a.length
+%>
+<div class="container-horizontal">
+	<div class="list-wrapper">
+		<% @skills.each_slice(10) do |part| %>
+		<table class="pg">
+			<caption>
+				<div class="caption-content">
+					<h1>Skill List</h1>
+					<a href="/skills/new"><i class="fas fa-plus-circle"></i></a>
+				</div>						
+			</caption>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% part.each do |p| %>
+				<tr>
+					<td><%= p.name %></td>
+					<td>
+						<a href="/skills/edit/<%= p.id %>">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+						<form action="/skills/delete" method="post">
+							<input type="hidden" id="skillId" name="skillId" value="<%= p.id %>" />
+            	<button type="submit">
+            		<i class="far fa-trash-alt" title="delete"></i>
+            	</button>
+						</form>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+			<% if (page_count > 1) then %>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<% (1..page_count).each do |p| %>
+						<a href="#"><%= p %></a>
+						<% end %>
+					</td>
+				</tr>
+			</tfoot>
+			<% end %>		
+		</table>	
+		<% end %>		
+	</div>
+</div>
+
+<% if (page_count > 1) then %>
+<script src="/js/paging.js"></script>
+<% end %>

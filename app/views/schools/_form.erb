@@ -1,0 +1,87 @@
+<%
+form_heading     = "Add Education"
+form_description = "Complete this form to enter a new educational institution."
+form_action      = "/education"
+form_submit      = "Add"
+
+if (@page == "edit") then
+  form_heading     = "Edit Education"
+  form_description = "Complete this form to update an existing educational institution."
+  form_action      = "/education/edit"
+	form_submit      = "Update"
+end
+%>
+
+<div class="container-vertical">
+	<div class="form-wrapper">
+		<form class="form" action="<%= form_action %>" method="post">
+			<h1><%= form_heading %></h1>
+			<p><%= form_description %></p>
+			
+			<% if (@errors.length > 0) then %>
+			<div class="form-errors">
+				Errors:
+				<ul>
+					<% @errors.each do |error| %>
+					<li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+		
+			<div class="form-group">
+				<label for="institution">Institution:</label>
+				<input type="text" id="name" name="name" value="<%= @school.name %>">
+			</div>
+			
+			<div class="form-group">
+				<label for="degree">Location:</label>
+				<input type="text" id="location" name="location" value="<%= @school.location %>">
+			</div>
+
+			<div class="form-group">
+				<label for="degree">Degree:</label>
+				<input type="text" id="degree" name="degree" value="<%= @school.degree %>">
+			</div>
+
+			<div class="form-group">
+				<label for="emphasis">Emphasis:</label>
+				<input type="text" id="emphasis" name="emphasis" value="<%= @school.emphasis %>">
+			</div>
+
+			<div class="form-group">
+				<label for="start">Start Year:</label>
+				<input type="text" id="start_year" name="start_year" value="<%= @school.start_year.to_s if @school.start_year.to_i > 0 %>">
+			</div>
+
+			<div class="form-group">
+				<label for="end">End Year:</label>
+				<input type="text" id="end_year" name="end_year" value="<%= @school.end_year.to_s if @school.end_year.to_i > 0 %>">
+			</div>
+
+			<div class="form-group">
+				<label for="location">Location:</label>
+				<input type="text" id="location" name="location" value="<%= @school.location %>">
+			</div>
+
+			<div class="form-group">
+				<div class="checkbox-group">
+					<input type="checkbox" id="online" name="online" value="online"<%= if (@school.online) then " checked" end %>>
+					<label for="online">
+						<span>
+							<i class="fas fa-check"></i>
+						</span>Online learning
+					</label>
+				</div>
+			</div>
+		
+			<div class="form-group">			
+				<button type="submit" class="btn"><%= form_submit %></button>
+			</div>
+			
+			<input type="hidden" id="schoolId" name="schoolId" value="<%= @school.id %>">
+		</form>
+	</div>
+</div>
+
+<script src="/js/task.js"></script>

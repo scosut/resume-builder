@@ -1,0 +1,3 @@
+# Resumé Builder
+
+This application improves the method of creating and maintaining a professional resumé. Original process involved user recording his qualifications in a word processing document, updating as needed. To share his design with others, user would forward as attachment to email. New process enables any user to record his qualifications by completing series of online forms, then executing call to action that transforms collected data into aesthetically pleasing output—no sharing required.

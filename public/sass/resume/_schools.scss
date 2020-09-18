@@ -1,0 +1,49 @@
+/* schools styles */
+.schools {
+	background: rgba($background-tertiary, 0.3);
+	padding: 2rem;
+	
+	@include atPrint() {
+		page-break-inside: avoid;
+	}
+	
+	.school {
+		@include atPrint() {
+			page-break-inside: avoid;
+		}
+	}
+	
+	h4 {
+		color: $heading-primary;
+		font-size: 2.4rem;
+		margin-top: 1rem;
+		
+		+ .school .title {
+			margin-top: 0rem;	
+		}
+	}
+
+	.title {
+		color: $nav-background;
+		margin-top: 1rem;
+	}
+
+	.content-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		font-style: italic;
+		justify-content: space-between;
+		margin: 0.2rem 0;
+	}
+
+	.year {
+		font-style: italic;
+		margin: 0.2rem 0;
+	}
+
+	.description em {
+		color: $text-secondary;
+		font-style: normal;
+	}
+}
+

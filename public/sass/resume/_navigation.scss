@@ -1,0 +1,46 @@
+@import "../navigation";
+
+/* navigation styles */
+#nav {
+	background: $heading-primary;
+	position: static;
+	
+	@include atSmall() {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	
+	&.dissolve {
+		@include atSmall() {
+			ul {
+				li {
+					div {
+						border: none;
+					}
+				}				
+			}
+		}
+	}
+	
+	ul {
+		li {
+			a {
+				&.active,
+				&:hover {
+					color: $heading-primary;
+				}
+			}
+			
+			div {
+				@include atSmall {
+					display: block;
+				}
+			}
+		}
+	}
+	
+	@include atPrint() {
+		display: none;
+	}
+}

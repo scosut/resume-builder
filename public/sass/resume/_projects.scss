@@ -1,0 +1,21 @@
+/* projects styles */
+.projects {
+	background: rgba($nav-text, 0.5);
+	padding: 2rem;
+	
+	.project {
+		@include atPrint() {
+			page-break-inside: avoid;
+		}
+	}
+	
+	.title {
+		color: $nav-background;
+		margin-top: 1rem;
+	}
+
+	.year {
+		font-style: italic;
+		margin: 0.2rem 0;
+	}
+}

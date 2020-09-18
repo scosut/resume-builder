@@ -1,0 +1,44 @@
+<%
+form_heading     = "Add Skill"
+form_description = "Complete this form to enter a new skill."
+form_action      = "/skills"
+form_submit      = "Add"
+
+if (@page == "edit") then
+  form_heading     = "Edit Skill"
+  form_description = "Complete this form to update an existing skill."
+  form_action      = "/skills/edit"
+	form_submit      = "Update"
+end
+%>
+
+<div class="container-vertical">
+	<div class="form-wrapper">
+		<form class="form" action="<%= form_action %>" method="post">
+			<h1><%= form_heading %></h1>
+			<p><%= form_description %></p>
+			
+			<% if (@errors.length > 0) then %>
+			<div class="form-errors">
+				Errors:
+				<ul>
+					<% @errors.each do |error| %>
+					<li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" value="<%= @skill.name %>">
+			</div>
+
+			<div class="form-group submit">
+				<button class="btn"><%= form_submit %></button>
+			</div>
+			
+			<input type="hidden" id="skillId" name="skillId" value="<%= @skill.id %>">
+		</form>			
+	</div>
+</div>

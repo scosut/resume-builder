@@ -1,0 +1,138 @@
+/* form styles */
+.form-wrapper {
+	background: rgba($background-secondary, 0.65);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 2rem;
+	width: 100%;
+	
+	@include atSmall() {
+		justify-content: center;
+		width: 32rem;
+	}
+	
+	.form {
+		font-size: 1.6rem;
+		
+		h1 {
+			color: $heading-primary;
+			font-size: 2.4rem;
+		}
+		
+		.form-errors {
+			border: 0.1rem solid $error-primary;
+			border-radius: 0.2rem;
+			color: $error-primary;
+			font-size: 1.6rem;
+			margin-top: 1.5rem;
+			padding: 0.5rem;
+
+			ul {
+				list-style: none;
+				padding-left: 1.5rem;
+			}		
+		}
+		
+		.form-group {
+			margin-top: 1.5rem;
+			
+			label {
+				display: block;
+			}
+			
+			input,
+			select,
+			textarea {
+				background: transparent;
+				border: 0.1rem solid $border-primary;
+				border-radius: 0.3rem;
+				color: inherit;
+				font: inherit;
+				padding: 0.4rem;
+				width: 100%;
+				
+				&:focus {
+					border: 0.1rem solid $outline-primary;
+				}
+			}
+			
+			textarea {
+				height: 10rem;
+				overflow: hidden;
+				resize: none;
+				
+				&:focus {
+					overflow: auto;
+				}
+			}
+			
+			.btn {
+				padding: 0.5rem 1rem;				
+			}
+			
+			&.submit {
+				align-items: center;
+				display: flex;
+				justify-content: space-between;
+				
+				span {
+					line-height: 1.5;
+					text-align: right;
+				}
+			}
+			
+			a {
+				color: $background-primary;
+				display: inline;
+				text-decoration: underline;
+			}
+			
+			.sort-group {
+				justify-content: space-between;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0.5rem 0 0 1.25rem;
+				width: 50%;
+				
+				select {
+					padding: 0;
+					width: auto;
+				}
+			}
+			
+			.checkbox-group {
+				display: flex;
+				align-items: flex-end;
+				
+				input[type=checkbox] {
+					display: none;
+					
+					&:checked ~ label span i {
+						opacity: 1;
+						transition: opacity 0.5s ease-in-out;	
+						visibility: visible;
+					}
+				}
+				
+				label {
+					display: inline-block;
+				}
+				
+				span {
+					border: 0.1rem solid $border-primary;
+					border-radius: 0.3rem;
+					display: inline-block;
+					margin-right: 0.7rem;
+					padding: 0.1rem 0.2rem;
+					
+					i {
+						color: $icon-primary;
+						opacity: 0;
+						visibility: hidden;
+					}
+				}
+			}
+		}
+	}
+}

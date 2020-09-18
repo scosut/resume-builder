@@ -1,0 +1,16 @@
+/* reset styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+	
+	@include atPrint() {
+		background: none !important;
+		border-color: #000 !important;
+		color: #000 !important;
+	}
+	
+	&:focus {
+		outline: none;
+	}
+}

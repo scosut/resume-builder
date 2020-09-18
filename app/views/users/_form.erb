@@ -1,0 +1,73 @@
+<%
+form_heading     = "Login"
+form_description = "Provide your credentials to login."
+form_action      = "/login"
+form_submit      = "Login"
+form_question    = "No account?"
+form_link_url    = "/register"
+form_link_text   = "Register"
+
+if (@page == "register") then
+  form_heading     = "Create an Account"
+  form_description = "Complete this form to register."
+  form_action      = "/register"
+	form_submit      = "Register"
+	form_question    = "Have an account?"
+	form_link_url    = "/login"
+	form_link_text   = "Login"
+end
+%>
+
+<div class="container-vertical">
+	<div class="form-wrapper">
+		<form class="form" action="<%= form_action %>" method="post">
+			<h1><%= form_heading %></h1>
+			<p><%= form_description %></p>
+			
+			<% if (@errors.length > 0) then %>
+			<div class="form-errors">
+				Errors:
+				<ul>
+					<% @errors.each do |error| %>
+					<li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" value="<%= @user.name %>">
+			</div>
+
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" id="title" name="title" value="<%= @user.title %>">
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="password" value="<%= @user.password %>">
+			</div>
+			
+			<% if (@page == "register") then %>
+			<div class="form-group">
+				<label for="confirm">Confirm Password:</label>
+				<input type="password" id="confirm" name="confirm" value="<%= @confirm %>">
+			</div>
+			<% end %>
+
+			<div class="form-group submit">
+				<button class="btn"><%= form_submit %></button>
+				<span>
+					<%= form_question %>
+					<a href="<%= form_link_url %>"><%= form_link_text %></a>
+					<% if (@page == "login") then %>
+					<br/>
+					Sign in as <a href="/guest">Guest</a>
+				</span>
+				<% end %>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+@import "../animation";
+
+.fadeOut {
+	animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+.dissolve {
+	@include atSmall() {
+		animation: dissolve 0.5s ease-in-out forwards;
+	}
+}
+
+@keyframes dissolve {
+  0% {
+    background: $heading-primary;
+  }
+  100% {
+    background: transparent;
+  }
+}

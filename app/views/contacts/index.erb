@@ -1,0 +1,59 @@
+<% 
+@page      = "contacts" 
+page_count = @contacts.each_slice(10).to_a.length
+%>
+<div class="container-horizontal">
+	<div class="list-wrapper">
+		<% @contacts.each_slice(10) do |part| %>
+		<table class="pg">
+			<caption>
+				<div class="caption-content">
+					<h1>Contact List</h1>
+					<a href="/contacts/new"><i class="fas fa-plus-circle"></i></a>
+				</div>						
+			</caption>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Value</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% part.each do |p| %>
+				<tr>
+					<td><%= p.title %></td>
+					<td><%= p.value %></td>
+					<td>
+						<a href="/contacts/edit/<%= p.id %>">
+							<i class="fas fa-pencil-alt"></i>
+						</a>
+						<form action="/contacts/delete" method="post">
+							<input type="hidden" id="contactId" name="contactId" value="<%= p.id %>" />
+            	<button type="submit">
+            		<i class="far fa-trash-alt" title="delete"></i>
+            	</button>
+						</form>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+			<% if (page_count > 1) then %>
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<% (1..page_count).each do |p| %>
+						<a href="#"><%= p %></a>
+						<% end %>
+					</td>
+				</tr>
+			</tfoot>
+			<% end %>				
+		</table>	
+		<% end %>		
+	</div>
+</div>
+
+<% if (page_count > 1) then %>
+<script src="/js/paging.js"></script>
+<% end %>

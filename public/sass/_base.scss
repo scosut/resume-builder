@@ -1,0 +1,37 @@
+/* base styles */
+html {
+	font-size: 10px;
+	height: 100%;
+}
+
+body {
+	background: linear-gradient(to bottom, rgba($background-primary, 0.8), rgba($background-primary, 0.8)), url(/img/tiles.jpg) center center/cover no-repeat;
+	color: $text-primary;
+	display: flex;
+	flex-direction: column;
+	font-family: $font-sans-serif;
+	font-size: 1.8rem;
+	line-height: 1.2;
+	min-height: 100vh;
+	
+	@include atSmall() {
+		flex-direction: row;
+	}
+}
+
+a {
+	display: block;
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+button {
+	background: transparent;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+}

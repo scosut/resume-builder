@@ -1,0 +1,65 @@
+/* skills styles */
+.skills {
+	background: rgba($nav-text, 0.5);
+	padding: 1rem 2rem 2rem 2rem;
+	
+	.row {
+		margin-left: 1.5rem;
+		
+		@include atSmall() {
+			display: flex;
+			margin-left: 0;
+		}
+		
+		.col {
+			@include atSmall() {
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				width: 50%;
+			}
+			
+			&:first-child {
+				@include atSmall() {
+					border-right: 0.1rem solid $heading-primary;
+				}	
+			}
+			
+			.content-wrapper {
+				@include atSmall() {
+					max-width: 90%;
+				}
+				
+				@include atMedium() {
+					display: flex;
+					max-width: 100%;
+					width: 100%;
+				}
+				
+				> div {
+					@include atMedium() {
+						display: flex;
+						justify-content: center;
+						width: 50%;
+					}
+					
+					&:first-child {
+						@include atMedium() {
+							border-right: 0.1rem solid $heading-primary;	
+						}
+					}
+					
+					> div {
+						@include atMedium() {
+							max-width: 80%;
+						}
+						
+						> div {
+							overflow: hidden;
+						}
+					}
+				}
+			}
+		}
+	}
+}

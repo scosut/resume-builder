@@ -1,0 +1,24 @@
+/* jobs styles */
+.jobs {
+	background: rgba($background-tertiary, 0.3);
+	padding: 2rem;
+	
+	.job {
+		@include atPrint() {
+			page-break-inside: avoid;
+		}
+	}
+	
+	.title {
+		color: $nav-background;
+		margin-top: 1rem;
+	}
+
+	.content-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		font-style: italic;
+		justify-content: space-between;
+		margin: 0.2rem 0;
+	}
+}

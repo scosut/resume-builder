@@ -1,0 +1,74 @@
+/* contacts styles */
+.contacts {
+	background: rgba($nav-text, 0.5);
+	padding: 2rem 2rem 0 2rem;
+	
+	&.with-heading {
+		padding: 0 0 2rem 0;	
+		
+		hr {
+			display: none;
+			
+			@include atPrint() {
+				display: block;
+			}
+		}
+		
+		h4 {
+			background: $nav-background;
+			color: $nav-text;
+			font-size: 3rem;
+			line-height: 1;
+			margin-bottom: 2rem;
+			padding-bottom: 0.7rem;			
+			text-align: center;
+		}
+	}
+	
+	.content-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		
+		> div {
+			overflow: hidden;
+			text-align: center;
+			width: 100%;
+			
+			@include atSmall() {
+				width: 50%;
+			}
+			
+			@include atMedium() {
+				width: 25%;
+			}
+			
+			&:nth-child(n+2) {
+				margin-top: 1.5rem;
+				
+				@include atSmall() {
+					margin-top: 0;
+				}
+			}
+			
+			&:nth-child(n+3) {
+				@include atSmall() {
+					margin-top: 1.5rem;
+				}
+				
+				@include atMedium() {
+					margin-top: 0;
+				}
+			}
+			
+			&:nth-child(n+5) {
+				@include atMedium() {
+					margin-top: 1.5rem;
+				}
+			}
+			
+			> div:first-child {
+				color: $heading-primary;
+			}
+		}
+	}
+}

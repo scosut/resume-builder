@@ -1,0 +1,69 @@
+<%
+form_heading     = "Add Job"
+form_description = "Complete this form to enter a new job."
+form_action      = "/jobs"
+form_submit      = "Add"
+
+if (@page == "edit") then
+  form_heading     = "Edit Job"
+  form_description = "Complete this form to update an existing job."
+  form_action      = "/jobs/edit"
+	form_submit      = "Update"
+end
+%>
+
+<div class="container-vertical">
+	<div class="form-wrapper">
+		<form class="form" action="<%= form_action %>" method="post">
+			<h1><%= form_heading %></h1>
+			<p><%= form_description %></p>
+			
+			<% if (@errors.length > 0) then %>
+			<div class="form-errors">
+				Errors:
+				<ul>
+					<% @errors.each do |error| %>
+					<li><%= error %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			
+			<div class="form-group">
+				<label for="employer">Employer:</label>
+				<input type="text" id="employer" name="employer" value="<%= @job.employer %>">
+			</div>
+
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" id="title" name="title" value="<%= @job.title %>">
+			</div>
+
+			<div class="form-group">
+				<label for="start">Start Year:</label>
+				<input type="text" id="start_year" name="start_year" value="<%= @job.start_year.to_s if @job.start_year.to_i > 0 %>">
+			</div>
+
+			<div class="form-group">
+				<label for="end">End Year:</label>
+				<input type="text" id="end_year" name="end_year" value="<%= @job.end_year.to_s if @job.end_year.to_i > 0 %>">
+			</div>
+
+			<div class="form-group">
+				<label for="location">Location:</label>
+				<input type="text" id="location" name="location" value="<%= @job.location %>">
+			</div>
+
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<textarea id="description" name="description"><%= @job.description %></textarea>
+			</div>
+
+			<div class="form-group submit">
+				<button class="btn"><%= form_submit %></button>
+			</div>
+			
+			<input type="hidden" id="jobId" name="jobId" value="<%= @job.id %>">
+		</form>			
+	</div>
+</div>

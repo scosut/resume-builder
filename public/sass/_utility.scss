@@ -1,0 +1,10 @@
+/* utility styles */
+.btn {
+  background: $button-primary;
+  border: none;
+	border-radius: 0.5rem;
+  color: $button-text;
+  cursor: pointer;
+	font: inherit;
+  padding: 1rem 2rem;
+}

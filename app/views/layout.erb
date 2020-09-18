@@ -1,0 +1,101 @@
+<%
+pages = { 
+	:home   => {
+		:url  => "/",
+		:icon => "fas fa-home"
+		},
+	:login  => {
+		:url  => "/login",
+		:icon => "fas fa-user"
+		},
+	:logout => {
+		:url   => "/logout",
+		:icon  => "fas fa-user"
+		},
+	:contacts => {
+		:url    => "/contacts",
+		:icon   => "fas fa-mobile-alt"
+		},
+	:skills => {
+		:url  => "/skills",
+		:icon => "fas fa-wrench"
+		}, 
+	:jobs   => {
+		:url  => "/jobs",
+		:icon => "fas fa-building"
+		}, 
+	:projects => {
+		:url    => "/projects",
+		:icon   => "fas fa-cog"
+		},
+	:education => {
+		:url     => "/education",
+		:icon    => "fas fa-graduation-cap"
+		},
+	:resume => {
+		:url  => "/resume",
+		:icon => "far fa-file-alt"
+		}	
+	}
+
+if (is_logged_in?) then
+	pages.delete(:login)	
+else
+	pages.delete(:logout)
+	pages.delete(:resume)
+end
+	
+button = is_logged_in? ? "logout" : "login"
+style  = @page == "resume" ? "resume.css" : "style.css"
+title  = @page == "resume" ? "Resum&eacute;" : @page.capitalize
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">		
+	<link rel="icon" type="image/png" href="/img/favicon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300&display=swap" rel="stylesheet">	
+	<link rel="stylesheet" href="/css/<%= style %>">
+	<title>Resume Builder | <%= title %></title>
+</head>
+<body>
+	<% #if @page != "resume" %>
+	<nav id="nav">
+		<ul>
+			<li>
+				<div>
+					<i id="menu" class="fas fa-chevron-circle-down hide"></i>
+					<span></span>
+				</div>
+			</li>
+			
+			<% pages.each do |key, val| %>
+			<li>
+				<a href="<%= val[:url] %>"<%= if (@page == key.to_s) then " class=\"active\"" end %>>
+					<i class="<%= val[:icon] %> hide"></i>
+					<span>
+					<%= 
+					if (key.to_s == "resume") then "Resum&eacute;" else key.capitalize end 
+					%>
+					</span>
+				</a>
+			</li>
+			<% end %>			
+		</ul>
+	</nav>
+	<% #end %>
+	
+	<% if (@page == "home") then %>
+	<div class="container-horizontal">
+		<h1>Start building your resum&eacute; today!</h1>
+		<a href="/<%= button %>" class="btn"><%= button.capitalize %></a>
+	</div>
+	<% end %>
+	
+	<%= yield %>
+	
+	<script src="/js/script.js"></script>
+</body>
+</html>

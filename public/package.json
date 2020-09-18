@@ -1,0 +1,26 @@
+{
+  "name": "Resume",
+  "version": "1.0.0",
+  "description": "Resume builder website",
+  "main": "index.js",
+  "browserslist": [
+    "> 1%",
+    "last 10 versions"
+  ],
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss --output-style expanded > css/style.css",
+    "prefix:css": "postcss css/style.css -u autoprefixer -o css/style.css",
+    "compile:resume": "node-sass sass/resume/main.scss --output-style expanded > css/resume.css",
+    "prefix:resume": "postcss css/resume.css -u autoprefixer -o css/resume.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "node-sass": "^4.14.1",
+    "postcss-cli": "^7.1.2"
+  },
+  "dependencies": {
+    "postcss": "^7.0.34"
+  }
+}
