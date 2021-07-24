@@ -47,13 +47,19 @@ end
 	
 button = is_logged_in? ? "logout" : "login"
 style  = @page == "resume" ? "resume.css" : "style.css"
-title  = @page == "resume" ? "Resum&eacute;" : @page.capitalize
+title  = @page == "resume" ? "R&eacute;sum&eacute;" : @page.capitalize
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">		
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />  		
+  <meta name="description" content="Resume Builder Website" />
+	<meta name="title" property="og:title" content="Resume Builder" />
+	<meta property="og:type" content="Website" />
+	<meta name="image" property="og:image" content="https://www.projectsbyscott.com/img/resume_screenshot.png" />
+	<meta name="description" property="og:description" content="Resume Builder Website" />
+	<meta name="author" content="Scott Sutton" />
 	<link rel="icon" type="image/png" href="/img/favicon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300&display=swap" rel="stylesheet">	
@@ -77,7 +83,7 @@ title  = @page == "resume" ? "Resum&eacute;" : @page.capitalize
 					<i class="<%= val[:icon] %> hide"></i>
 					<span>
 					<%= 
-					if (key.to_s == "resume") then "Resum&eacute;" else key.capitalize end 
+					if (key.to_s == "resume") then "R&eacute;sum&eacute;" else key.capitalize end 
 					%>
 					</span>
 				</a>
@@ -89,7 +95,7 @@ title  = @page == "resume" ? "Resum&eacute;" : @page.capitalize
 	
 	<% if (@page == "home") then %>
 	<div class="container-horizontal">
-		<h1>Start building your resum&eacute; today!</h1>
+		<h1>Start building your r&eacute;sum&eacute; today!</h1>
 		<a href="/<%= button %>" class="btn"><%= button.capitalize %></a>
 	</div>
 	<% end %>

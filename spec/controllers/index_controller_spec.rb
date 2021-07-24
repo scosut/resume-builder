@@ -24,8 +24,8 @@ describe "Our Index Controller" do
     expect(last_response.body.include?("Home")).to be(true)
   end
 	
-	it "responds with a view titled 'Resum&eacute;' when we visit /resume" do
+	it "responds with a view titled 'R&eacute;sum&eacute;' when we visit /resume" do
     get("/resume")
-    expect(last_response.body.include?("Resum&eacute;")).to be(true)
+    expect(last_response.body.include?("R&eacute;sum&eacute;")).to be(true)
   end
 end
