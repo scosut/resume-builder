@@ -28,6 +28,7 @@ body {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 1.8rem;
   line-height: 1.2;
+  opacity: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -108,6 +109,29 @@ a {
   }
 }
 
+.fadeInPage {
+  -webkit-animation: fadeInPage 2s ease-in-out forwards;
+          animation: fadeInPage 2s ease-in-out forwards;
+}
+
+@-webkit-keyframes fadeInPage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInPage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .fadeOut {
   -webkit-animation: fadeOut 0.5s ease-in-out forwards;
           animation: fadeOut 0.5s ease-in-out forwards;
@@ -144,6 +168,11 @@ a {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+.fadeInPage {
+  -webkit-animation: fadeInPage 2s ease-in-out forwards;
+          animation: fadeInPage 2s ease-in-out forwards;
 }
 
 .fadeOut {

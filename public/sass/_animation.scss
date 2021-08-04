@@ -16,6 +16,19 @@
   }
 }
 
+.fadeInPage {
+	animation: fadeInPage 2s ease-in-out forwards;
+}
+
+@keyframes fadeInPage {
+  0% {
+		opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .fadeOut {
 	animation: fadeOut 0.5s ease-in-out forwards;
 	

@@ -66,41 +66,41 @@ title  = @page == "resume" ? "R&eacute;sum&eacute;" : @page.capitalize
 	<link rel="stylesheet" href="/css/<%= style %>">
 	<title>Resume Builder | <%= title %></title>
 </head>
-<body>
-	<% #if @page != "resume" %>
-	<nav id="nav">
-		<ul>
-			<li>
-				<div>
-					<i id="menu" class="fas fa-chevron-circle-down hide"></i>
-					<span></span>
-				</div>
-			</li>
-			
-			<% pages.each do |key, val| %>
-			<li>
-				<a href="<%= val[:url] %>"<%= if (@page == key.to_s) then " class=\"active\"" end %>>
-					<i class="<%= val[:icon] %> hide"></i>
-					<span>
-					<%= 
-					if (key.to_s == "resume") then "R&eacute;sum&eacute;" else key.capitalize end 
-					%>
-					</span>
-				</a>
-			</li>
-			<% end %>			
-		</ul>
-	</nav>
-	<% #end %>
-	
-	<% if (@page == "home") then %>
-	<div class="container-horizontal">
-		<h1>Start building your r&eacute;sum&eacute; today!</h1>
-		<a href="/<%= button %>" class="btn"><%= button.capitalize %></a>
-	</div>
-	<% end %>
-	
-	<%= yield %>
+<body class="fadeInPage">
+  <div id="page">
+    <nav id="nav" data-page="<%= @page %>">
+      <ul>
+        <li>
+          <div>
+            <i id="menu" class="fas fa-chevron-circle-down hide"></i>
+            <span></span>
+          </div>
+        </li>
+        
+        <% pages.each do |key, val| %>
+        <li>
+          <a href="<%= val[:url] %>"<%= if (@page == key.to_s) then " class=\"active\"" end %>>
+            <i class="<%= val[:icon] %> hide"></i>
+            <span>
+            <%= 
+            if (key.to_s == "resume") then "R&eacute;sum&eacute;" else key.capitalize end 
+            %>
+            </span>
+          </a>
+        </li>
+        <% end %>			
+      </ul>
+    </nav>
+    
+    <% if (@page == "home") then %>
+    <div class="container-horizontal">
+      <h1>Start building your r&eacute;sum&eacute; today!</h1>
+      <a href="/<%= button %>" class="btn"><%= button.capitalize %></a>
+    </div>
+    <% end %>
+    
+    <%= yield %>
+  </div>
 	
 	<script src="/js/script.js"></script>
 </body>

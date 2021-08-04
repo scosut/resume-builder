@@ -5,6 +5,10 @@ html {
 }
 
 body {
+  opacity: 0;
+}
+
+#page {
 	background: linear-gradient(to bottom, rgba($background-primary, 0.8), rgba($background-primary, 0.8)), url(/img/tiles.jpg) center center/cover no-repeat;
 	color: $text-primary;
 	display: flex;
